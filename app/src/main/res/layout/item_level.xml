@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/dp_8"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:id="@+id/cell"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_10"
+        android:background="@drawable/bg_addition">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_score"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="3dp"
+                    android:fontFamily="@font/myriadpro_regular"
+                    android:includeFontPadding="false"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="@color/white" />
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:background="@drawable/level_set"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/tv_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/myriadpro_semibold"
+                        android:gravity="center_vertical"
+                        android:includeFontPadding="false"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/white" />
+
+
+                </LinearLayout>
+
+
+                <!--                <RelativeLayout-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_gravity="center_horizontal"-->
+                <!--                   -->
+                <!--                    android:background="@drawable/level_set">-->
+
+                <!--                    <TextView-->
+                <!--                        android:id="@+id/tv_title"-->
+                <!--                        android:layout_width="wrap_content"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:layout_centerVertical="true"-->
+                <!--                        android:fontFamily="@font/myriadpro_semibold"-->
+                <!--                        android:gravity="center_horizontal"-->
+                <!--                        android:includeFontPadding="false"-->
+                <!--                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"-->
+                <!--                        android:textColor="@color/white" />-->
+
+                <!--                </RelativeLayout>-->
+
+                <LinearLayout
+                    android:id="@+id/progressView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="@dimen/dp_5"
+                    android:gravity="center"
+                    android:orientation="horizontal" />
+
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

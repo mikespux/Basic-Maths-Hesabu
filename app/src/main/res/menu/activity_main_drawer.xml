@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+
+
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_homepage"
+            android:title="@string/menu_home" />
+
+
+        <item
+            android:id="@+id/nav_find_missing"
+            android:icon="@drawable/search"
+            android:title="@string/find_missing" />
+
+
+        <item
+            android:id="@+id/nav_pdf"
+            android:icon="@drawable/ic_pdf"
+            android:title="@string/worksheet_generate" />
+
+
+        <item
+            android:id="@+id/nav_gallery"
+            android:icon="@drawable/ic_papers"
+            android:title="@string/show_worksheet" />
+
+        <item
+            android:id="@+id/nav_setting"
+            android:icon="@drawable/ic_worlwide"
+
+            android:title="@string/language" />
+
+        <item
+            android:id="@+id/nav_daily_test"
+            android:icon="@drawable/ic_daily_test"
+            android:title="@string/daily_test" />
+        <item
+            android:id="@+id/nav_reminder"
+            android:icon="@drawable/ic_notifications_none_black_24dp"
+            android:title="@string/reminder" />
+
+
+        <item
+            android:id="@+id/nav_sound"
+            android:icon="@drawable/ic_volume_up_black_24dp"
+            android:title="@string/sound"
+            app:actionLayout="@layout/layout_switch" />
+
+        <item
+            android:id="@+id/nav_coin"
+            android:icon="@drawable/ic_drawer_coin"
+            android:title="@string/coins" />
+
+
+            <item
+                android:id="@+id/nav_settings"
+                android:icon="@drawable/ic_settings_black_24dp"
+                android:title="@string/action_settings" />
+
+
+    </group>
+
+    <item android:title="@string/communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_privacy_policy"
+                android:icon="@drawable/policy"
+                android:title="@string/privacy_policy"
+                android:visible="true" />
+
+
+
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="@string/menu_share" />
+
+
+            <item
+                android:id="@+id/nav_rate_us"
+                android:icon="@drawable/ic_like"
+                android:title="@string/rate_us"
+                android:visible="true" />
+            <item
+                android:id="@+id/nav_feedback"
+                android:icon="@drawable/ic_menu_send"
+                android:title="@string/feedback"
+                android:visible="true" />
+
+        </menu>
+    </item>
+
+</menu>

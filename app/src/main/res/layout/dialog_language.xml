@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent"
+    android:orientation="vertical"
+    android:padding="30dp">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/dp_10"
+                android:text="@string/language"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@color/cyanColorPrimary"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="@dimen/dp_10"
+                android:layout_marginEnd="@dimen/dp_10"
+                android:layout_marginBottom="@dimen/dp_8"
+                android:background="@color/cyanColorPrimary" />
+
+
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_marginStart="@dimen/dp_10"
+                android:layout_margin="@dimen/dp_10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <RadioGroup
+                android:id="@+id/radio_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_marginStart="@dimen/dp_10"
+                android:orientation="vertical">
+
+                <RadioButton
+                    android:id="@+id/btn_addition"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_5"
+                    android:button="@drawable/custom_radio_button"
+                    android:paddingStart="@dimen/dp_5"
+                    android:paddingEnd="@dimen/dp_5"
+                    android:text="@string/addition" />
+
+
+                <RadioButton
+                    android:id="@+id/btn_subtraction"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_5"
+                    android:button="@drawable/custom_radio_button"
+                    android:paddingStart="@dimen/dp_5"
+                    android:paddingEnd="@dimen/dp_5"
+                    android:text="@string/subtraction" />
+
+
+                <RadioButton
+                    android:id="@+id/btn_multiplication"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_5"
+                    android:button="@drawable/custom_radio_button"
+                    android:paddingStart="@dimen/dp_5"
+                    android:paddingEnd="@dimen/dp_5"
+                    android:text="@string/multiplication" />
+
+
+                <RadioButton
+                    android:id="@+id/btn_division"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_5"
+                    android:button="@drawable/custom_radio_button"
+                    android:paddingStart="@dimen/dp_5"
+                    android:paddingEnd="@dimen/dp_5"
+                    android:text="@string/division" />
+
+
+            </RadioGroup>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_10">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+
+
+
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_50"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/btn_cancel"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/cell_cyan"
+                    android:fontFamily="@font/myriadpro_bold"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:padding="10dp"
+                    android:layout_marginEnd="1dp"
+                    android:text="@string/cancel"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@android:color/white" />
+
+
+                <TextView
+                    android:id="@+id/btn_ok"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/cell_cyan"
+                    android:fontFamily="@font/myriadpro_bold"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:padding="10dp"
+                    android:text="@string/ok"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@android:color/white" />
+
+
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>

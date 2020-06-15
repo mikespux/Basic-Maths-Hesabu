@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F9A42</color>
+    <color name="colorPrimaryDark">#338E36</color>
+    <color name="colorAccent">#FF9800</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#363636</color>
+    <color name="orange">#FC8F2E</color>
+    <color name="blue">#1B81D1</color>
+    <color name="green">#39B54A</color>
+    <color name="red">#F44336</color>
+    <color name="pink">#FF6174</color>
+    <color name="bgColor">#F2F3F8</color>
+
+
+    <color name="orangeColorPrimary">#F55135</color>
+    <color name="orangeColorPrimaryDark">#F55135</color>
+    <color name="transparent">#00000000</color>
+
+
+
+    <color name="blueColorPrimary">#016CAB</color>
+    <color name="blueColorPrimaryDark">#016CAB</color>
+
+
+
+    <color name="violetColorPrimary">#7A4196</color>
+    <color name="violetColorPrimaryDark">#7A4196</color>
+
+
+    <color name="cyanColorPrimary">#3F9A42</color>
+    <color name="cyanColorPrimaryDark">#338E36</color>
+
+    <color name="color_808080">#808080</color>
+
+    <color name="color_white">#ffffff</color>
+    <color name="color_black">#000000</color>
+    <color name="color_green">#097E14</color>
+    <color name="color_fb">#3441C6</color>
+    <color name="color_summer">#D15427</color>
+    <color name="color_winter">#005173</color>
+    <color name="color_light_gray">#D3D3D3</color>
+
+    <color name="dark_black">#FF000000</color>
+    <color name="txt_light_color">#949393</color>
+    <color name="txt_color">#494949</color>
+
+</resources>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+
+
+        <CheckBoxPreference
+            android:key="enablethemeMode"
+            android:title="@string/themeMode"
+            android:summary="@string/themeModeSummary"
+            android:defaultValue="false" />
+        <ListPreference
+            android:key="timermode"
+            android:title="@string/timerMode"
+            android:summary="@string/timerModeSummary"
+            android:entries="@array/timerModeNames"
+            android:entryValues="@array/timerModes"
+            android:defaultValue="60"/>
+
+
+
+</PreferenceScreen>
