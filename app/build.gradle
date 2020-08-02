@@ -7,8 +7,8 @@ android {
         applicationId "com.wachi.hesabu"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 101
-        versionName "1.1"
+        versionCode 104
+        versionName "1.1.4"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

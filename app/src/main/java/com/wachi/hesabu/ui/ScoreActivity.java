@@ -477,6 +477,11 @@ public class ScoreActivity extends BaseActivity {
         builder.setView(view);
 
         LinearLayout btn_show_video = view.findViewById(R.id.btn_show_video);
+        if (getResources().getString(R.string.ADS_VISIBILITY).equals("YES")) {
+            btn_show_video.setVisibility(View.VISIBLE);
+        }else{
+            btn_show_video.setVisibility(View.GONE);
+        }
         LinearLayout btn_use_coin = view.findViewById(R.id.btn_use_coin);
         TextView text_coint = view.findViewById(R.id.text_coint);
         ImageView btn_close = view.findViewById(R.id.btn_close);

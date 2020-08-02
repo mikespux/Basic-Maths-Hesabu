@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-      android:orientation="vertical">
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -170,13 +171,22 @@
         <LinearLayout
             android:id="@+id/ll_ads_view"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="wrap_content"
             android:layout_alignParentTop="false"
             android:layout_alignParentBottom="true"
             android:orientation="horizontal"
             android:visibility="visible">
 
-
+            <com.google.android.gms.ads.AdView
+                android:id="@+id/adView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="0"
+                ads:adSize="BANNER"
+                ads:adUnitId="@string/banner_ads" />
         </LinearLayout>
     </RelativeLayout>
 

@@ -213,7 +213,7 @@ public class WorkSheetActivity extends AppCompatActivity implements WorkSheetSet
         text_image = findViewById(R.id.text_image);
 
         edt_watermark = findViewById(R.id.edt_watermark);
-        edt_watermark.setText("Okenwa");
+        edt_watermark.setText("Maths");
         btn_question_category = findViewById(R.id.btn_question_category);
         text_operation = findViewById(R.id.text_operation);
         layout_select_operation.setVisibility(View.GONE);

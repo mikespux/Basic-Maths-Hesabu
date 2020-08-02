@@ -519,7 +519,7 @@ public class MainActivity extends AppCompatActivity
         return intent;
     }
     private static void sendFeedbackFromUser(Activity activity, String txt) {
-        String mailto = "mailto:support@" + activity.getString(R.string.feedback_mail) +
+        String mailto = "mailto:" + activity.getString(R.string.feedback_mail) +
                 "?cc=" + "" +
                 "&subject=" + Uri.encode(activity.getString(R.string.app_name)) +
                 "&body=" + Uri.encode(txt);
