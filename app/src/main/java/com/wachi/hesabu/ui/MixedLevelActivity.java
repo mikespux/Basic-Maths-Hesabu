@@ -52,9 +52,13 @@ public class MixedLevelActivity extends BaseActivity implements LevelAdapter.Ite
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level);
         init();
+        adView = findViewById(R.id.adView);
+
         if (getResources().getString(R.string.ADS_VISIBILITY).equals("YES")) {
             adview();
-        }
+        }else{
+        adView.setVisibility(View.GONE);
+    }
     }
     private void adview() {
 

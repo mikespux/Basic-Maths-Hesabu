@@ -57,9 +57,13 @@ public class LevelActivity extends BaseActivity implements LevelAdapter.ItemClic
         Constant.setDefaultLanguage(this);
         setContentView(R.layout.activity_level);
         init();
+        adView = findViewById(R.id.adView);
+
         if (getResources().getString(R.string.ADS_VISIBILITY).equals("YES")) {
             adview();
-        }
+        }else{
+        adView.setVisibility(View.GONE);
+    }
 
     }
 
@@ -80,7 +84,6 @@ public class LevelActivity extends BaseActivity implements LevelAdapter.ItemClic
 
         // Gets the ad view defined in layout/ad_fragment.xml with ad unit ID set in
         // values/strings.xml.
-        adView = findViewById(R.id.adView);
 
         // Create an ad request.
         AdRequest adRequest = new AdRequest.Builder().build();

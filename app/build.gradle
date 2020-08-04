@@ -7,8 +7,8 @@ android {
         applicationId "com.wachi.hesabu"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 104
-        versionName "1.1.4"
+        versionCode 105
+        versionName "1.1.5"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -16,6 +16,31 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    signingConfigs {
+        dev {
+            storeFile file('D:/WachiApps/1.WachiAppsKey/debug/debug.keystore')
+            storePassword 'android'
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+        }
+        release {
+            storeFile file('D:/WachiApps/1.WachiAppsKey/release/wachiapps.jks')
+            storePassword 'mikespux'
+            keyAlias'wachiapps'
+            keyPassword 'mikespux'
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+        debug {
+            applicationIdSuffix '.debug'
         }
     }
     packagingOptions {
