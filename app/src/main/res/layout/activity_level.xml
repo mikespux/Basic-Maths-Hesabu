@@ -166,26 +166,7 @@
             android:layout_marginEnd="@dimen/dp_5"
             android:layout_marginBottom="@dimen/dp_5" />
 
-        <LinearLayout
-            android:id="@+id/ll_ads_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="false"
-            android:layout_alignParentBottom="true"
-            android:orientation="horizontal"
-            android:visibility="visible">
 
-            <com.google.android.gms.ads.AdView
-                android:id="@+id/adView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="5dp"
-                android:layout_weight="0"
-                ads:adSize="BANNER"
-                ads:adUnitId="@string/banner_ads" />
-        </LinearLayout>
     </RelativeLayout>
 
 

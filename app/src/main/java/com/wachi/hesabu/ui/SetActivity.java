@@ -15,9 +15,6 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
 import com.wachi.hesabu.R;
 import com.wachi.hesabu.adapter.SetAdapter;
 import com.wachi.hesabu.database.DatabaseAccess;

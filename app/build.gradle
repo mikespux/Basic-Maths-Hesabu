@@ -7,8 +7,8 @@ android {
         applicationId "com.wachi.hesabu"
         minSdkVersion 21
         targetSdkVersion 33
-        versionCode 107
-        versionName "1.1.7"
+        versionCode 108
+        versionName "1.1.8"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -72,7 +72,7 @@ dependencies {
     implementation 'com.readystatesoftware.sqliteasset:sqliteassethelper:2.0.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'org.apache.pdfbox:pdfbox:2.0.0-RC3'
-    implementation 'com.google.android.gms:play-services-ads:22.2.0'
+
     implementation 'com.google.code.gson:gson:2.8.9'
     implementation('com.github.thekhaeng:pushdown-anim-click:1.1.1') {
         exclude group: 'com.android.support'
