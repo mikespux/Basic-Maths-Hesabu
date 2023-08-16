@@ -18,7 +18,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.InterstitialAd;
 import com.wachi.hesabu.R;
 import com.wachi.hesabu.adapter.SetAdapter;
 import com.wachi.hesabu.database.DatabaseAccess;
@@ -43,8 +42,6 @@ public class SetActivity extends BaseActivity implements SetAdapter.ItemClick {
     String tableName;
     int themePosition, main_theme;
     List<SetModel> setModelList = new ArrayList<>();
-    boolean interstitialCanceled;
-    InterstitialAd mInterstitialAd;
     ConnectionDetector cd;
     int Mainposition = 0,themepos=0;
     String Title = "";
@@ -126,14 +123,9 @@ public class SetActivity extends BaseActivity implements SetAdapter.ItemClick {
 
         themepos = themePosition1;
         Title = title;
-        if (!interstitialCanceled) {
-            if (mInterstitialAd != null && mInterstitialAd.isLoaded()) {
-                mInterstitialAd.show();
-            } else {
+
                 ContinueIntent();
-//                    onBackPressed();
-            }
-        }
+//
 
     }
 
@@ -144,36 +136,15 @@ public class SetActivity extends BaseActivity implements SetAdapter.ItemClick {
 
     @Override
     protected void onPause() {
-        mInterstitialAd = null;
-        interstitialCanceled = true;
         super.onPause();
     }
 
     @Override
     protected void onResume() {
-        interstitialCanceled = false;
-        if (getResources().getString(R.string.ADS_VISIBILITY).equals("YES")) {
-            CallNewInsertial();
-        }
+
         super.onResume();
     }
-    private void requestNewInterstitial() {
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mInterstitialAd.loadAd(adRequest);
-    }
-    private void CallNewInsertial() {
-        cd = new ConnectionDetector(SetActivity.this);
-        if (cd.isConnectingToInternet()) {
-            mInterstitialAd = new InterstitialAd(SetActivity.this);
-            mInterstitialAd.setAdUnitId(getString(R.string.admob_interstitial_id));
-            requestNewInterstitial();
-            mInterstitialAd.setAdListener(new AdListener() {
-                public void onAdClosed() {
-                    ContinueIntent();
-                }
-            });
-        }
-    }
+
 
     private void ContinueIntent() {
         SetModel setModel = setModelList.get(Mainposition);

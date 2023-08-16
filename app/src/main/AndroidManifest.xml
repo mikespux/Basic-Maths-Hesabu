@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.wachi.hesabu">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -18,7 +17,8 @@
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="@string/app_id"/>
-        <receiver android:name="com.wachi.hesabu.receiver.AlarmReceiver">
+        <receiver android:name="com.wachi.hesabu.receiver.AlarmReceiver"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
@@ -43,7 +43,8 @@
 
         <activity
             android:name="com.wachi.hesabu.ui.SplashActivity"
-            android:theme="@style/SplashTheme">
+            android:theme="@style/SplashTheme"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -52,11 +53,13 @@
         </activity>
         <activity
             android:name="com.wachi.hesabu.ui.MainActivity"
+            android:exported="true"
             android:theme="@style/FullScreenWindow">
         </activity>
         <activity
             android:name="com.wachi.hesabu.ui.WorkSheetActivity"
-            android:theme="@style/FullScreenWindow" >
+            android:theme="@style/FullScreenWindow"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -24,9 +24,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:fontFamily="@font/myriadpro_semibold"
                 android:gravity="center"
-                android:includeFontPadding="false"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/white" />
         </androidx.appcompat.widget.Toolbar>

@@ -1,5 +1,8 @@
 package com.wachi.hesabu.ui;
 
+import static com.wachi.hesabu.utils.Constant.getTextString;
+import static com.wachi.hesabu.utils.Constant.setDefaultLanguage;
+
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -24,14 +27,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
-
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.InterstitialAd;
-import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.reward.RewardItem;
-import com.google.android.gms.ads.reward.RewardedVideoAd;
-import com.google.android.gms.ads.reward.RewardedVideoAdListener;
 import com.wachi.hesabu.R;
 import com.wachi.hesabu.database.DatabaseAccess;
 import com.wachi.hesabu.model.ProgressModel;
@@ -41,9 +36,6 @@ import com.wachi.hesabu.utils.Constant;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.wachi.hesabu.utils.Constant.getTextString;
-import static com.wachi.hesabu.utils.Constant.setDefaultLanguage;
-
 public class ScoreActivity extends BaseActivity {
 
     TextView tv_right_answer, tv_wrong_answer;
@@ -51,7 +43,6 @@ public class ScoreActivity extends BaseActivity {
     TextView btn_home, btn_next;
     ImageView img_retry, img_next, img_home, img_share;
     Button btn_view_answer;
-    RewardedVideoAd rewardedVideoAd;
     ProgressBar progress_bar;
     DatabaseAccess databaseAccess;
     String tableName;
@@ -60,9 +51,6 @@ public class ScoreActivity extends BaseActivity {
     String title;
     ConnectionDetector cd;
     List<ProgressModel> progressModels;
-    boolean isVideoComplete;
-    ProgressDialog progressDialog;
-    Handler addHandler = new Handler();
     Intent intent;
     TextView btn_share, btn_retry, tv_coin, tv_set_count, tv_total_count, tv_score, tv_best_score;
     LinearLayout progressView;
@@ -71,22 +59,7 @@ public class ScoreActivity extends BaseActivity {
     int percentageProgress;
 
 
-    boolean interstitialCanceled;
-    InterstitialAd mInterstitialAd;
-    Runnable addRunnable = new Runnable() {
-        public void run() {
 
-            if (rewardedVideoAd.isLoaded()) {
-                videoShow();
-                progressDialog.dismiss();
-                addHandler.removeCallbacks(addRunnable);
-            } else {
-                progressDialog.show();
-                addHandler.postDelayed(addRunnable, 500);
-            }
-
-        }
-    };
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -100,107 +73,16 @@ public class ScoreActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
         cd = new ConnectionDetector(this);
-        interstitialCanceled = false;
-        if (getResources().getString(R.string.ADS_VISIBILITY).equals("YES")) {
-            CallNewInsertial();
-        }
-        setAddViews();
 
     }
 
-    private void loadRewardedVideoAd() {
-        rewardedVideoAd.loadAd(getString(R.string.video_reward_ads),
-                new AdRequest.Builder().build());
-    }
 
-    public void setAddViews() {
-//        mInterstitialAd = new InterstitialAd(this);
-//        mInterstitialAd.setAdUnitId(getString(R.string.admob_interstitial_id));
-        rewardedVideoAd = MobileAds.getRewardedVideoAdInstance(this);
-
-        loadRewardedVideoAd();
-//        if (!mInterstitialAd.isLoading() && !mInterstitialAd.isLoaded()) {
-//            AdRequest adRequest = new AdRequest.Builder().build();
-//            mInterstitialAd.loadAd(adRequest);
-//        }
-
-
-    }
 
     @Override
     protected void onPause() {
-        mInterstitialAd = null;
-        interstitialCanceled = true;
         super.onPause();
     }
 
-    private void requestNewInterstitial() {
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mInterstitialAd.loadAd(adRequest);
-    }
-
-    private void CallNewInsertial() {
-        cd = new ConnectionDetector(ScoreActivity.this);
-        if (cd.isConnectingToInternet()) {
-            mInterstitialAd = new InterstitialAd(ScoreActivity.this);
-            mInterstitialAd.setAdUnitId(getString(R.string.admob_interstitial_id));
-            requestNewInterstitial();
-
-        }
-    }
-
-    public void videoShow() {
-        rewardedVideoAd.show();
-
-        isVideoComplete = false;
-        rewardedVideoAd.setRewardedVideoAdListener(new RewardedVideoAdListener() {
-            @Override
-            public void onRewardedVideoAdLoaded() {
-
-            }
-
-            @Override
-            public void onRewardedVideoAdOpened() {
-
-            }
-
-            @Override
-            public void onRewardedVideoStarted() {
-
-            }
-
-            @Override
-            public void onRewardedVideoAdClosed() {
-                if (isVideoComplete) {
-                    showHistoryDialogs();
-                }
-
-            }
-
-            @Override
-            public void onRewarded(RewardItem rewardItem) {
-
-            }
-
-            @Override
-            public void onRewardedVideoAdLeftApplication() {
-
-            }
-
-            @Override
-            public void onRewardedVideoAdFailedToLoad(int i) {
-
-            }
-
-            @Override
-            public void onRewardedVideoCompleted() {
-                isVideoComplete = true;
-
-            }
-        });
-
-
-    }
 
 
     private void init() {
@@ -407,34 +289,7 @@ public class ScoreActivity extends BaseActivity {
         btn_retry.setOnClickListener(v -> {
 
 
-            if (!interstitialCanceled) {
-                if (mInterstitialAd != null && mInterstitialAd.isLoaded()) {
-                    mInterstitialAd.show();
-                    mInterstitialAd.setAdListener(new AdListener() {
-                        public void onAdClosed() {
-                            if (isFraction) {
-                                intent = new Intent(ScoreActivity.this, FractionActivity.class);
-                            } else {
-                                intent = new Intent(ScoreActivity.this, QuizActivity.class);
-                            }
-                            passData();
-                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                            startActivity(intent);
-                        }
-                    });
 
-                } else {
-                    if (isFraction) {
-                        intent = new Intent(ScoreActivity.this, FractionActivity.class);
-                    } else {
-                        intent = new Intent(ScoreActivity.this, QuizActivity.class);
-                    }
-                    passData();
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(intent);
-//                    onBackPressed();
-                }
-            }
 
 
         });
@@ -460,9 +315,6 @@ public class ScoreActivity extends BaseActivity {
     }
 
     public void backIntent() {
-        if (addHandler != null) {
-            addHandler.removeCallbacks(addRunnable);
-        }
         intent = new Intent(this, LevelActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         passData();
@@ -505,7 +357,6 @@ public class ScoreActivity extends BaseActivity {
         btn_show_video.setBackgroundResource(Constant.getDrawbles().get(themePosition).drawable);
 
         btn_show_video.setOnClickListener(v -> {
-            showVideo();
             dialog.dismiss();
 
         });
@@ -526,27 +377,7 @@ public class ScoreActivity extends BaseActivity {
     }
 
 
-    public void showVideo() {
-        if (cd.isConnectingToInternet()) {
-            if (rewardedVideoAd != null && rewardedVideoAd.isLoaded()) {
-                videoShow();
 
-            } else {
-                loadRewardedVideoAd();
-                progressDialog = new ProgressDialog(this);
-                progressDialog.setCancelable(false);
-                progressDialog.setMessage(getString(R.string.please_wait));
-                progressDialog.show();
-                addHandler.postDelayed(addRunnable, 50);
-
-            }
-
-        } else {
-            Toast.makeText(this, "" + getString(R.string.str_video_error), Toast.LENGTH_SHORT).show();
-
-        }
-
-    }
 
 
 }

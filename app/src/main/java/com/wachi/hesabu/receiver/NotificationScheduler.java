@@ -45,7 +45,7 @@ public class NotificationScheduler {
         }
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
         stackBuilder.addNextIntent(intent1);
-        PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(DAILY_REMINDER_REQUEST_CODE, PendingIntent.FLAG_UPDATE_CURRENT
+        PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(DAILY_REMINDER_REQUEST_CODE, PendingIntent.FLAG_IMMUTABLE
                 | PendingIntent.FLAG_ONE_SHOT);
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context, channelId)
                 .setSmallIcon(R.mipmap.ic_launcher_round).setContentTitle(context.getResources().getString(R.string.app_name))

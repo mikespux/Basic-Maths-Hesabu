@@ -28,7 +28,7 @@ public class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         mSharedPrefs= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        if (mSharedPrefs.getBoolean("enablethemeMode", false) == true) {
+        if (mSharedPrefs.getBoolean("enablethemeMode", false)) {
             setTheme(R.style.Okenwa_Black);
         }
         Constant.setDefaultLanguage(this);

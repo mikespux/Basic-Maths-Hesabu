@@ -1,5 +1,8 @@
 package com.wachi.hesabu.ui;
 
+import static com.wachi.hesabu.utils.Constant.getTextString;
+import static com.wachi.hesabu.utils.Constant.setDefaultLanguage;
+
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -30,18 +33,9 @@ import com.wachi.hesabu.database.DatabaseAccess;
 import com.wachi.hesabu.model.ProgressModel;
 import com.wachi.hesabu.utils.ConnectionDetector;
 import com.wachi.hesabu.utils.Constant;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.InterstitialAd;
-import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.reward.RewardItem;
-import com.google.android.gms.ads.reward.RewardedVideoAd;
-import com.google.android.gms.ads.reward.RewardedVideoAdListener;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.wachi.hesabu.utils.Constant.getTextString;
-import static com.wachi.hesabu.utils.Constant.setDefaultLanguage;
 
 public class MixedScoreActivity extends BaseActivity {
 
@@ -58,10 +52,8 @@ public class MixedScoreActivity extends BaseActivity {
     boolean isVideoComplete;
     ProgressDialog progressDialog;
     List<ProgressModel> progressModels;
-    InterstitialAd mInterstitialAd;
     Intent intent;
     Handler addHandler = new Handler();
-    RewardedVideoAd rewardedVideoAd;
     ImageView img_retry, img_next, img_home, img_share;
     TextView btn_share, btn_retry, tv_coin, tv_set_count, tv_total_count, tv_score, tv_best_score;
     LinearLayout progressView;
@@ -81,92 +73,13 @@ public class MixedScoreActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
         cd = new ConnectionDetector(this);
-        mInterstitialAd = new InterstitialAd(this);
-        setAddViews();
-
-    }
-
-    private void loadRewardedVideoAd() {
-        rewardedVideoAd.loadAd(getString(R.string.video_reward_ads),
-                new AdRequest.Builder().build());
-    }
-
-    public void setAddViews() {
-        mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId(getString(R.string.admob_interstitial_id));
-        rewardedVideoAd = MobileAds.getRewardedVideoAdInstance(this);
-
-        loadRewardedVideoAd();
-        if (!mInterstitialAd.isLoading() && !mInterstitialAd.isLoaded()) {
-            AdRequest adRequest = new AdRequest.Builder().build();
-            mInterstitialAd.loadAd(adRequest);
-        }
 
 
     }
 
-    Runnable addRunnable = new Runnable() {
-        public void run() {
-            if (rewardedVideoAd.isLoaded()) {
-                videoShow();
-                progressDialog.dismiss();
-                addHandler.removeCallbacks(addRunnable);
-            } else {
-                progressDialog.show();
-                addHandler.postDelayed(addRunnable, 500);
-            }
-        }
-    };
 
 
-    public void videoShow() {
-        rewardedVideoAd.show();
-        isVideoComplete = false;
-        rewardedVideoAd.setRewardedVideoAdListener(new RewardedVideoAdListener() {
-            @Override
-            public void onRewardedVideoAdLoaded() {
 
-            }
-
-            @Override
-            public void onRewardedVideoAdOpened() {
-
-            }
-
-            @Override
-            public void onRewardedVideoStarted() {
-
-            }
-
-            @Override
-            public void onRewardedVideoAdClosed() {
-                if (isVideoComplete) {
-                    showHistoryDialogs();
-                }
-            }
-
-            @Override
-            public void onRewarded(RewardItem rewardItem) {
-
-            }
-
-            @Override
-            public void onRewardedVideoAdLeftApplication() {
-
-            }
-
-            @Override
-            public void onRewardedVideoAdFailedToLoad(int i) {
-            }
-
-            @Override
-            public void onRewardedVideoCompleted() {
-                isVideoComplete = true;
-            }
-        });
-
-
-    }
 
 
     private void init() {
@@ -363,9 +276,7 @@ public class MixedScoreActivity extends BaseActivity {
     }
 
     public void backIntent() {
-        if (addHandler != null) {
-            addHandler.removeCallbacks(addRunnable);
-        }
+
         intent = new Intent(this, MixedLevelActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         passData();
@@ -405,7 +316,6 @@ public class MixedScoreActivity extends BaseActivity {
         btn_close.setOnClickListener(v -> dialog.dismiss());
 
         btn_show_video.setOnClickListener(v -> {
-            showVideo();
             dialog.dismiss();
 
         });
@@ -426,22 +336,7 @@ public class MixedScoreActivity extends BaseActivity {
     }
 
 
-    public void showVideo() {
-        if (cd.isConnectingToInternet()) {
-            if (rewardedVideoAd != null && rewardedVideoAd.isLoaded()) {
-                videoShow();
-            } else {
-                loadRewardedVideoAd();
-                progressDialog = new ProgressDialog(this);
-                progressDialog.setCancelable(false);
-                progressDialog.setMessage(getString(R.string.please_wait));
-                progressDialog.show();
-                addHandler.postDelayed(addRunnable, 50);
-            }
-        } else {
-            Toast.makeText(this, "" + getString(R.string.str_video_error), Toast.LENGTH_SHORT).show();
-        }
-    }
+
 
 
 }
